@@ -1,10 +1,31 @@
-.Home
-{
-	position: relative;
-	width:100%;
-	height:100vh;
-	background-image:url('https://img1.goodfon.ru/original/7016x3800/a/31/gory-oblaka-lyudi-ryukzaki.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+.defaultHero,
+.roomsHero {
+  min-height: calc(100vh - 66px);
+  background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.roomsHero {
+    background-image: url("./images/room-2.jpeg");  
+    min-height: 60vh; 
+}
+
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: var(--mainSpacing);
+    color: var(--mainBlack);
+    background: var(--primaryColor);
+    padding: 0.4rem 0.9rem;
+    border: 3px solid var(--primaryColor);
+    transition: var(--mainTransition);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--primaryColor);
+  }
