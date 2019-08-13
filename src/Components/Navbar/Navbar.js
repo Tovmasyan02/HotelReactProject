@@ -1,34 +1,48 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 import {Link} from 'react-router-dom';
-import { FaAlignRight } from "react-icons/fa";
+import { FaEllipsisV, FaTimes } from "react-icons/fa";
 
 export default class Navbar extends Component {
-    state = {
-        isOpen: true
+
+      OpenMenu = () => {
+        let menu=document.getElementsByClassName("menu")[0];
+        menu.style.right='0px';
       };
-      handleToggle = () => {
-        
-        this.setState({ isOpen: !this.state.isOpen });
+      
+      CloseMenu = (event) => {
+        // Чтобы меню не закрылось, при нажатии на панель 
+        if(event.target.tagName==="UL")
+             return;
+        let menu=document.getElementsByClassName("menu")[0];
+        menu.style.right='-100%';
       };
+
     render() {
         return (
-             <div className="navbar">
-               <div className="nav-center">
-                 <div className="nav-header">
-                     <h3 className="logo">Beach Hotel</h3>
-                     <button
-                      type="button"
-                      className="nav-btn"
-                      onClick={this.handleToggle}>
-                     <FaAlignRight className="nav-icon"/></button>
-                 </div>
-                     <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
-                       <li><Link to="/">Home</Link></li>
-                       <li><Link to="/rooms">Rooms</Link></li>
-                     </ul>
-                 </div>
-             </div>
+          <header>
+          <h2 class="logo"> Beach Resort</h2>
+          <label onClick={this.OpenMenu} class="show-menu-btn">
+            <FaEllipsisV/>
+          </label>
+          <ul class="menu" onClick={this.CloseMenu}>
+              <div className="group">
+                  <Link to="/">Home</Link>
+              </div>
+            <div className="group">
+                  <Link to="/rooms">Rooms</Link>
+            </div>
+            <div className="group">
+                  <Link to="/About us">About us </Link>
+            </div>
+            <div className="group">
+                <Link to="/contacts">Contacts</Link>
+            </div>
+             <label onClick={this.CloseMenu} class="hide-menu-btn">
+               <FaTimes/>
+             </label>
+          </ul>
+        </header>
         )
     }
 }
